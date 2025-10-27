@@ -1,0 +1,37 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+<h2 style="text-align:center; margin-bottom:20px;">Edit Post</h2>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="{{ post_data.title }}" placeholder="Enter title">
+
+    <label for="content">Content</label>
+    <textarea id="content" name="content" rows="6" placeholder="Write content">{{ post_data.content }}</textarea>
+
+    <label for="category">Category</label>
+    <select id="category" name="category">
+        <option value="">Select category</option>
+        <option value="Technology" {% if post_data.category == 'Technology' %}selected{% endif %}>Technology</option>
+        <option value="Lifestyle" {% if post_data.category == 'Lifestyle' %}selected{% endif %}>Lifestyle</option>
+        <option value="Business" {% if post_data.category == 'Business' %}selected{% endif %}>Business</option>
+    </select>
+
+    <label for="image">Image</label>
+    <input type="file" id="image" name="image">
+    {% if post_data.image %}
+        <img src="{{ post_data.image.url }}" width="100" style="margin-top:8px; border-radius:6px;">
+    {% endif %}
+
+    <label for="published_date">Published Date</label>
+    <input type="date" id="published_date" name="published_date" value="{{ post_data.published_date|date:'Y-m-d' }}">
+
+    <label for="updated_at">Updated At</label>
+    <input type="date" id="updated_at" name="updated_at" value="{{ post_data.updated_at|date:'Y-m-d' }}">
+
+    <input type="submit" value="Update">
+</form>
+{% endblock body %}

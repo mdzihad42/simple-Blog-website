@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f7fb;
+  color: #111827;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* ===== Form Styling ===== */
+form {
+  background-color: #ffffff;
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(20, 20, 50, 0.08);
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(20, 20, 50, 0.12);
+}
+
+h2 {
+  text-align: center;
+  color: #111827;
+  margin-bottom: 25px;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+select {
+  width: 100%;
+  padding: 14px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+select:focus {
+  border-color: #ff6b8a;
+  box-shadow: 0 0 6px rgba(255, 107, 138, 0.3);
+  outline: none;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #ff6b8a;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+input[type=submit]:hover {
+  background-color: #ff5072;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 80, 114, 0.4);
+}
+
+/* Placeholder Styling */
+::placeholder {
+  color: #a1a1aa;
+  font-size: 14px;
+}
+
+select {
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<form action="" method="POST">
+    {% csrf_token %}
+  <h2>Register</h2>
+
+  <label for="fname">Full Name</label>
+  <input type="text" id="fname" name="full_name" placeholder="Your full name">
+
+  <label for="uname">Username</label>
+  <input type="text" id="uname" name="username" placeholder="Your username">
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Your email">
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" placeholder="Enter password">
+
+  <label for="confirm_password">Confirm Password</label>
+  <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password">
+
+  <label for="user_type">User Type</label>
+  <select id="user_type" name="user_type">
+    <option value="Author">Author</option>
+    <option value="Admin">Admin</option>
+  </select>
+  
+  <input type="submit" value="Register">
+</form>
+
+</body>
+</html>

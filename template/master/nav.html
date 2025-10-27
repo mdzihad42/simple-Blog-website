@@ -1,0 +1,25 @@
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="{% url 'homePage' %}">My<span>Blog</span></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{% url 'homePage' %}">Home</a></li>
+
+      {% if request.user.user_type == 'Author' %}
+      <li><a href="{% url 'addPage' %}">Add Post</a></li>
+      {% endif %}
+
+      <li><a href="{% url 'postPage' %}">Posts</a></li>
+      <li><a href="{% url 'registerPage' %}">Register</a></li>
+      <li><a href="{% url 'logoutPage' %}">Logout</a></li>
+    </ul>
+
+    <div class="nav-user">
+      <div class="user-avatar">{{ request.user.full_name|slice:":1" }}</div>
+      <span class="user-name">{{ request.user.full_name }}</span>
+      <span class="user-name">{{request.user.user_type}}</span>
+    </div>
+  </div>
+</nav>
